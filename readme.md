@@ -2,7 +2,9 @@
 Tallink proovitöö REST api for managing Conferences and Participants
 
 ###GET /conferences 
+
 returns all conferences as json
+
 #####example response
 ```json
 [
