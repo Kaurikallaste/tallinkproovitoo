@@ -1,11 +1,11 @@
 # Proovitöö REST API
 Tallink proovitöö REST api for managing Conferences and Participants
 
-###GET /conferences 
+GET /conferences 
 
 returns all conferences as json
 
-#####example response
+example response
 ```json
 [
 	{
@@ -43,8 +43,8 @@ returns all conferences as json
 ]
 ```
 
-###GET /conferences/{id} - returns conference with given ID as json
-#####example response
+GET /conferences/{id} - returns conference with given ID as json
+example response
 ``` json
 {
 	"id": 2,
@@ -58,20 +58,20 @@ returns all conferences as json
 	]
 }
 ```
-###GET /conferences/{id}/max_participants 
+GET /conferences/{id}/max_participants 
 returns FALSE if conference max participants is reached otherwise returns TRUE
-#####example response
+example response
 ``` json
 true
 ```
 
-###POST /conferences
+POST /conferences
 adds a participant to the database
-#####example request
+example request
 ```json
 {"name":"conference three", "maxParticipants" : 5}
 ```
-#####example response
+example response
 ```json
 {
 	"id": 3,
@@ -80,9 +80,9 @@ adds a participant to the database
 	"participants": null
 }
 ```
-###DELETE /conferences/{id}
+DELETE /conferences/{id}
 deletes the conference with the given ID, gives no response body on success
-#####example response on ERROR
+example response on ERROR
 ```json
 {
 	"timestamp": "2022-06-03T13:58:25.966+00:00",
@@ -94,14 +94,14 @@ deletes the conference with the given ID, gives no response body on success
 }
 ```
 
-###POST /conferences/{id}/add_participant
+POST /conferences/{id}/add_participant
 adds a participant to a conference
-#####example request
+example request
 ```json
 {"name": "user"}
 ```
 
-#####example response
+example response
 ```json
 {"name": "user"}
 ```
