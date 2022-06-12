@@ -70,7 +70,7 @@ public class ConferenceControllerTests {
     }
 
     @Test
-    public void shouldAddController(){
+    public void shouldAddConference(){
         Conference conference = new Conference(1L, "test", 3);
 
         RestAssuredMockMvc.given()
@@ -83,7 +83,7 @@ public class ConferenceControllerTests {
     }
 
     @Test
-    public void shouldNotAddControllerWithBlankName(){
+    public void shouldNotAddConferenceWithBlankName(){
         Conference conference = new Conference(1L, "", 3);
 
         RestAssuredMockMvc.given()
@@ -96,7 +96,7 @@ public class ConferenceControllerTests {
     }
 
     @Test
-    public void shouldNotAddControllerWithNegativeMaxParticipants(){
+    public void shouldNotAddConferenceWithNegativeMaxParticipants(){
         Conference conference = new Conference(1L, "test", -2);
 
         RestAssuredMockMvc.given()
