@@ -3,12 +3,15 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.kaurikallaste.tallinkproovitoo.Conference.Conference;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity(name="PARTICIPANT")
 public class Participant {
 
 
     private @Id @GeneratedValue Long id;
+    @NotBlank(message = "Participant name cannot be blank")
     private String name;
 
     @ManyToOne

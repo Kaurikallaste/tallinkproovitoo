@@ -47,4 +47,20 @@ public class ParticipantControllerTests {
                 .statusCode(201);
     }
 
+    @Test
+    public void shouldNotAddParticipantWithBlankName(){
+        Conference conference = new Conference(1L, "testConference", 50);
+        Participant participant = new Participant(3L, "", conference);
+
+        Mockito.when(conferenceService.findConferenceById(conference.getId())).thenReturn(conference);
+
+        RestAssuredMockMvc.given()
+                .contentType("application/json")
+                .body(participant)
+                .when()
+                .post("/participants/" + conference.getId())
+                .then()
+                .statusCode(400);
+    }
+
 }

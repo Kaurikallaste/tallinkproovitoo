@@ -12,11 +12,7 @@ public class ParticipantService {
     ParticipantRepository participantRepository;
 
     public Participant addParticipant(Participant participant){
-        try {
-            return participantRepository.save(participant);
-        } catch (Exception ex) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "participant could not be saved", ex);
-        }
+        return participantRepository.save(participant);
     }
 
     public void deleteParticipant(Long id){

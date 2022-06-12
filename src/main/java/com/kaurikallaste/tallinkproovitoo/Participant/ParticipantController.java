@@ -4,7 +4,13 @@ import com.kaurikallaste.tallinkproovitoo.Conference.Conference;
 import com.kaurikallaste.tallinkproovitoo.Conference.ConferenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 public class ParticipantController {
@@ -22,7 +28,7 @@ public class ParticipantController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/participants/{id}")
-    public Participant addParticipant(@PathVariable Long id, @RequestBody Participant participant){
+    public Participant addParticipant(@PathVariable Long id,@Valid @RequestBody Participant participant){
         Conference conference = conferenceService.findConferenceById(id);
 
         //check if conference has room for more participants
@@ -31,6 +37,19 @@ public class ParticipantController {
             participant.setConference(conference);
         }
         return participantService.addParticipant(participant);
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Map<String, String> handleValidationExceptions(
+            MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getAllErrors().forEach((error) -> {
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
+        });
+        return errors;
     }
 
 }
