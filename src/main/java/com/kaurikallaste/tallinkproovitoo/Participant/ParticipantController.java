@@ -1,7 +1,7 @@
 package com.kaurikallaste.tallinkproovitoo.Participant;
 
-import com.kaurikallaste.tallinkproovitoo.conference.Conference;
-import com.kaurikallaste.tallinkproovitoo.conference.ConferenceService;
+import com.kaurikallaste.tallinkproovitoo.Conference.Conference;
+import com.kaurikallaste.tallinkproovitoo.Conference.ConferenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

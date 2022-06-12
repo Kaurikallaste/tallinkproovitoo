@@ -1,6 +1,6 @@
 package com.kaurikallaste.tallinkproovitoo.Participant;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.kaurikallaste.tallinkproovitoo.conference.Conference;
+import com.kaurikallaste.tallinkproovitoo.Conference.Conference;
 
 import javax.persistence.*;
 

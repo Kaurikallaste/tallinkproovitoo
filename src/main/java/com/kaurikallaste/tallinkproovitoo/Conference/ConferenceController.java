@@ -1,4 +1,4 @@
-package com.kaurikallaste.tallinkproovitoo.conference;
+package com.kaurikallaste.tallinkproovitoo.Conference;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -1,8 +1,8 @@
 package com.kaurikallaste.tallinkproovitoo;
 
-import com.kaurikallaste.tallinkproovitoo.conference.Conference;
-import com.kaurikallaste.tallinkproovitoo.conference.ConferenceController;
-import com.kaurikallaste.tallinkproovitoo.conference.ConferenceService;
+import com.kaurikallaste.tallinkproovitoo.Conference.Conference;
+import com.kaurikallaste.tallinkproovitoo.Conference.ConferenceController;
+import com.kaurikallaste.tallinkproovitoo.Conference.ConferenceService;
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;

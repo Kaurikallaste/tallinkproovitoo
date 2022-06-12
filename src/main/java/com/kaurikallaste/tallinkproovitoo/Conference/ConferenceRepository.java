@@ -1,4 +1,4 @@
-package com.kaurikallaste.tallinkproovitoo.conference;
+package com.kaurikallaste.tallinkproovitoo.Conference;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

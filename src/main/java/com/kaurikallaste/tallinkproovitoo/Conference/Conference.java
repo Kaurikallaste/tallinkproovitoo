@@ -1,4 +1,4 @@
-package com.kaurikallaste.tallinkproovitoo.conference;
+package com.kaurikallaste.tallinkproovitoo.Conference;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.kaurikallaste.tallinkproovitoo.Participant.Participant;
@@ -8,7 +8,6 @@ import org.springframework.web.server.ResponseStatusException;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
