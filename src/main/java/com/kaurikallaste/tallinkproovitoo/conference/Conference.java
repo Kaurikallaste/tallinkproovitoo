@@ -6,6 +6,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +18,10 @@ public class Conference {
 
 
     private @Id @GeneratedValue long id;
+    @NotBlank(message = "Conference name cannot be blank")
     private String name;
+    @NotNull(message = "Conference max participants cannot be blank")
+    @Min(value = 1, message = "Conference max participants must be greater than 0")
     private int maxParticipants;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "conference")

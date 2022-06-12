@@ -26,12 +26,7 @@ public class ConferenceService {
         if(conferenceRepository.existsById(conference.getId())){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "conference with that id already exists");
         }
-
-        try {
-            return conferenceRepository.save(conference);
-        } catch (Exception ex) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "conference could not be saved", ex);
-        }
+        return conferenceRepository.save(conference);
     }
 
     public void deleteConference(Long id){

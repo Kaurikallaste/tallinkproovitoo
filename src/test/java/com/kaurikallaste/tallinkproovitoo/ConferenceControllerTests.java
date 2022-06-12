@@ -81,5 +81,31 @@ public class ConferenceControllerTests {
                 .then()
                     .statusCode(201);
     }
+
+    @Test
+    public void shouldNotAddControllerWithBlankName(){
+        Conference conference = new Conference(1L, "", 3);
+
+        RestAssuredMockMvc.given()
+                .contentType("application/json")
+                .body(conference)
+                .when()
+                .post("/conferences")
+                .then()
+                .statusCode(400);
+    }
+
+    @Test
+    public void shouldNotAddControllerWithNegativeMaxParticipants(){
+        Conference conference = new Conference(1L, "test", -2);
+
+        RestAssuredMockMvc.given()
+                .contentType("application/json")
+                .body(conference)
+                .when()
+                .post("/conferences")
+                .then()
+                .statusCode(400);
+    }
     
 }

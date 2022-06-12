@@ -2,10 +2,15 @@ package com.kaurikallaste.tallinkproovitoo.conference;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 
+import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController()
 public class ConferenceController {
@@ -31,7 +36,7 @@ public class ConferenceController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/conferences")
-    public Conference addConference(@RequestBody Conference conference){
+    public Conference addConference(@Valid @RequestBody Conference conference){
         return conferenceService.addConference(conference);
     }
 
@@ -39,4 +44,18 @@ public class ConferenceController {
     public void deleteConference(@PathVariable Long id){
         conferenceService.deleteConference(id);
     }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Map<String, String> handleValidationExceptions(
+            MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getAllErrors().forEach((error) -> {
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
+        });
+        return errors;
+    }
+
 }
